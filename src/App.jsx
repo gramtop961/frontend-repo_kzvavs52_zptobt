@@ -1,28 +1,53 @@
-import { useState } from 'react'
+import React from 'react';
+import Hero from './components/Hero';
+import About from './components/About';
+import Skills from './components/Skills';
+import Experience from './components/Experience';
+import Projects from './components/Projects';
+import Certifications from './components/Certifications';
+import Contact from './components/Contact';
 
-function App() {
-  const [count, setCount] = useState(0)
+const Navbar = () => {
+  const items = [
+    { href: '#home', label: 'Home' },
+    { href: '#about', label: 'About' },
+    { href: '#skills', label: 'Skills' },
+    { href: '#experience', label: 'Experience' },
+    { href: '#projects', label: 'Projects' },
+    { href: '#certifications', label: 'Certifications' },
+    { href: '#contact', label: 'Contact' },
+  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+    <div className="fixed inset-x-0 top-4 z-50 flex justify-center px-4">
+      <nav className="flex items-center gap-1 rounded-full border border-white/10 bg-black/40 px-2 py-1 text-sm text-white/80 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl">
+        {items.map((i) => (
+          <a
+            key={i.href}
+            href={i.href}
+            className="rounded-full px-3 py-1.5 transition-colors hover:bg-white/10 hover:text-white"
           >
-            Count is {count}
-          </button>
-        </div>
-      </div>
+            {i.label}
+          </a>
+        ))}
+      </nav>
     </div>
-  )
+  );
+};
+
+function App() {
+  return (
+    <div className="min-h-screen w-full bg-[#0a0a0c] font-sans">
+      <Navbar />
+      <Hero />
+      <About />
+      <Skills />
+      <Experience />
+      <Projects />
+      <Certifications />
+      <Contact />
+    </div>
+  );
 }
 
-export default App
+export default App;
